@@ -1,10 +1,16 @@
 var canvas;
 var x;
 var y;
+var afinn;
+
+function preload() {
+  afinn = loadJSON("afinn111.json");
+}
 
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
+  canvas.setStyle("z-index: -1");
   x = mouseX;
   y = mouseY;
 }
@@ -21,4 +27,6 @@ function draw() {
   ellipse(width - x, y, 50);
   ellipse(x, height - y, 50);
   ellipse(width - x, height - y, 50);
+
+  //console.log("hi #goals".split(/[^\w#]+/));
 }
