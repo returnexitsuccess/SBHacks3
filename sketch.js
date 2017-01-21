@@ -16,8 +16,8 @@ function setup() {
   y = mouseY;
 
   input = createInput();
-  input.position(width / 2, height / 2);
-  input.html("class='start'");
+  //input.position(width / 2, height / 2);
+  input.class("start");
 }
 
 function windowResized() {

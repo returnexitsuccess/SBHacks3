@@ -1,3 +1,19 @@
 input.start {
   background-color: #333333;
+  /*border-style: none;*/
+  border: 2px;
+  border-radius:7px;
+  padding: 5px;
+  color: white;
+  font-size: 72;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+input.start:focus {
+  border-color: #333333;
+  outline: none;
 }
