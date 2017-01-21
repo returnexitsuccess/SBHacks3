@@ -1,7 +1,8 @@
-var sentiment = analyze(text);
-
 function analyze(text) {
-	var new_text = text.split(/[^\w#]+/);
+	text = text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+	console.log(text);
+	var new_text = text.split(/[^\w#']+/);
+	console.log(new_text);
 	var total_rating = 0;
 	for(var index in new_text) {
 		var word = new_text[index].toLowerCase();
