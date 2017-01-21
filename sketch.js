@@ -2,6 +2,7 @@ var canvas;
 var x;
 var y;
 var afinn;
+var input;
 
 function preload() {
   afinn = loadJSON("afinn111.json");
@@ -10,9 +11,13 @@ function preload() {
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
-  canvas.setStyle("z-index: -1");
+  canvas.style("z-index: -1");
   x = mouseX;
   y = mouseY;
+
+  input = createInput();
+  input.position(width / 2, height / 2);
+  input.html("class='start'");
 }
 
 function windowResized() {
