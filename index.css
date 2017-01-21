@@ -17,3 +17,14 @@ input.start:focus {
   border-color: #333333;
   outline: none;
 }
+
+div#start > p {
+  color: white;
+  font-size: 36;
+  font-family: "Arial", sans-serif;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: translate(0, -200px);
+}

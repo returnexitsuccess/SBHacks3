@@ -15,6 +15,8 @@ function setup() {
   x = mouseX;
   y = mouseY;
 
+  createP("Input Twitter Username").parent("start");
+
   input = createInput();
   //input.position(width / 2, height / 2);
   input.class("start");
