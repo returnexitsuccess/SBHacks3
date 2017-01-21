@@ -3,7 +3,11 @@ var x;
 var y;
 var afinn;
 var input;
+var startP;
 var userTweets = {};
+
+var startState = true;
+var analysisState = false;
 
 function preload() {
   afinn = loadJSON("afinn111.json");
@@ -16,7 +20,7 @@ function setup() {
   x = mouseX;
   y = mouseY;
 
-  createP("Input Twitter Username").parent("start");
+  startP = createP("Input Twitter Username").parent("start");
 
   input = createInput("@");
   //input.position(width / 2, height / 2);
@@ -25,6 +29,18 @@ function setup() {
 
 function windowResized() {
   canvas = resizeCanvas(windowWidth, windowHeight);
+}
+
+function keyPressed() {
+  if (keyCode == ENTER) {
+    //console.log("enter");
+    startState = false;
+    analysisState = true;
+    startP.remove();
+    var username = input.value();
+    input.remove();
+    getUserTweets(username);
+  }
 }
 
 function draw() {
@@ -37,11 +53,17 @@ function draw() {
   ellipse(x, height - y, 50);
   ellipse(width - x, height - y, 50);
 
+  if (startState) {
+    startDraw();
+  }
+
+  //console.log("hi #goals".split(/[^\w#]+/));
+}
+
+function startDraw() {
   if (input.value() == "" || input.value()[0] != "@") {
     input.value("@");
   } else {
     input.value(input.value());
   }
-
-  //console.log("hi #goals".split(/[^\w#]+/));
 }
