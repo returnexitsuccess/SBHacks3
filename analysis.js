@@ -1,5 +1,3 @@
-//TODO:Take user handle as input and access a list of their tweets via the global dictionary userTweets {key=user:value=array of tweet objects}
-
 function analyze(text) {
 	text = text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
 	console.log(text);
@@ -15,4 +13,8 @@ function analyze(text) {
 	}
 	var avg_rating = total_rating / (new_text.length);
 	return avg_rating;
+}
+
+function partialAnalysis() {
+	//Analyzes some of the tweets for a user and stores results in global var, doesn't do all to retain framerate on draw loop in sketch.js
 }
