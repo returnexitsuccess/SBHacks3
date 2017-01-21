@@ -46,18 +46,16 @@ function keyPressed() {
 function draw() {
   background(51);
   noStroke();
-  x = lerp(x, mouseX, 0.2);
-  y = lerp(y, mouseY, 0.2);
-  ellipse(x, y, 50);
-  ellipse(width - x, y, 50);
-  ellipse(x, height - y, 50);
-  ellipse(width - x, height - y, 50);
 
   if (startState) {
+    x = lerp(x, mouseX, 0.2);
+    y = lerp(y, mouseY, 0.2);
+    ellipse(x, y, 50);
+    ellipse(width - x, y, 50);
+    ellipse(x, height - y, 50);
+    ellipse(width - x, height - y, 50);
     startDraw();
   }
-
-  //console.log("hi #goals".split(/[^\w#]+/));
 }
 
 function startDraw() {
