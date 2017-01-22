@@ -24,18 +24,15 @@ function analyze(text) {
 	return avg_rating;
 }
 
-function iterator(list) {
+function iterator() {
 	for(var i = 0; i < 100; i++) {
-		if(list[i] == null)
+		if(toAnalyze.length == 0)
 			break;
 		else {
-			var tweet = list[i];
+			var tweet = toAnalyze[0];
 			var sentiment = analyze(tweet.text);
+			toAnalyze.shift();
 			console.log(sentiment);
 		}
 	}
-}
-
-function partialAnalysis() {
-	//Analyzes some of the tweets for a user and stores results in global var, doesn't do all to retain framerate on draw loop in sketch.js
 }
