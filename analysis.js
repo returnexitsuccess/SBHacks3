@@ -35,3 +35,7 @@ function iterator(list) {
 		}
 	}
 }
+
+function partialAnalysis() {
+	//Analyzes some of the tweets for a user and stores results in global var, doesn't do all to retain framerate on draw loop in sketch.js
+}

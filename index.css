@@ -1,5 +1,5 @@
 input.start {
-  background-color: #333333;
+  background-color: rgba(0, 0, 0, 0);
   /*border-style: none;*/
   border: 2px;
   border-radius:7px;
@@ -26,5 +26,5 @@ div#start > p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transform: translate(0, -200px);
+  transform: translate(-200px, -200px);
 }
