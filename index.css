@@ -28,3 +28,13 @@ div#start > p {
   transform: translate(-50%, -50%);
   transform: translate(-200px, -200px);
 }
+
+div#view > p {
+  color: white;
+  font-size: 48;
+  font-family: "Arial", sans-serif;
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
