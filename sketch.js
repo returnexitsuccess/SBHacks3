@@ -121,5 +121,9 @@ function startDraw() {
 function viewInit() {
   createP(currentUser).parent("top");
   var totalAverage = userData.average;
-
+  createP("Average Sentiment Score per Tweet " + totalAverage).parent("average");
+  var bestText = userData.bestTweet.text;
+  var bestScore = userData.bestTweet.score;
+  createP(bestText).parent("best").id("tweet");
+  createP("Score " + bestScore).parent("best").id("score");
 }
