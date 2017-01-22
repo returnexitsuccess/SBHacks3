@@ -29,7 +29,8 @@ function setup() {
   roff = 0;
   angle = 0;
 
-  startP = createP("Input Twitter Username:").parent("start");
+  startP = createP("Input Twitter Username:");
+  startP.parent("prompt");
 
   input = createInput("@");
   input.class("start");
@@ -97,10 +98,10 @@ function draw() {
     startDraw();
   } else if (analysisState) {
     if (toAnalyze.length != 0) {
-      partialAnalysis();
+      iterator();
 
       //dummy code
-      toAnalyze.shift();;
+      // toAnalyze.shift();
     } else {
       analysisState = false;
       viewState = true;
@@ -118,5 +119,11 @@ function startDraw() {
 }
 
 function viewInit() {
-  createP(currentUser).parent("view");
+  createP(currentUser).parent("top");
+  var totalAverage = userData.average;
+  createP("Average Sentiment Score per Tweet " + totalAverage).parent("average");
+  var bestText = userData.bestTweet.text;
+  var bestScore = userData.bestTweet.score;
+  createP(bestText).parent("best").id("tweet");
+  createP("Score " + bestScore).parent("best").id("score");
 }

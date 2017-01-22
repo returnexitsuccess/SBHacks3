@@ -1,8 +1,14 @@
+var best_tweet;
+var worst_tweet;
+var avg_score;
+var monthly_avg = new Array(12);
+var sentiment_total = 0;
+
 function analyze(text) {
 	console.log(text);
-	text = text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+	var text2 = text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
 	//console.log(text);
-	var new_text = text.split(/[^\w#']+/);
+	var new_text = text2.split(/[^\w#']+/);
 	//console.log(new_text);
 	var total_rating = 0;
 	for(var i = new_text.length-1; i >= 0; i--) {
@@ -21,21 +27,62 @@ function analyze(text) {
 	}
 	//console.log(new_text);
 	var avg_rating = total_rating/(new_text.length);
-	return avg_rating;
+	var sentiments = [avg_rating, new_text.length];
+	console.log(avg_rating);
+	return sentiments;
 }
 
-function iterator(list) {
+function iterator() {
 	for(var i = 0; i < 100; i++) {
-		if(list[i] == null)
+		if(toAnalyze.length == 0)
 			break;
 		else {
-			var tweet = list[i];
+			var tweet = toAnalyze[0];
 			var sentiment = analyze(tweet.text);
 			console.log(sentiment);
+			sentiment_total += sentiment[0];
+			if(best_tweet == null) {
+				best_tweet = {string:tweet.text, score:sentiment[0], word_count:sentiment[1], likes:(tweet.favorite_count+tweet.retweet_count)};
+				worst_tweet = {string:tweet.text, score:sentiment[0], word_count:sentiment[1], likes:(tweet.favorite_count+tweet.retweet_count)};
+			}
+			else if(sentiment[0] >= best_tweet.score) {
+				if(sentiment[0] > best_tweet.score) {
+					best_tweet.string = tweet.text;
+					best_tweet.score = sentiment[0];
+					best_tweet.word_count = sentiment[1];
+					best_tweet.likes = (tweet.favorite_count+tweet.retweet_count);
+				}
+				else {
+					if((tweet.favorite_count+tweet.retweet_count) > (best_tweet.likes)) {
+						best_tweet.string = tweet.text;
+						best_tweet.score = sentiment[0];
+						best_tweet.word_count = sentiment[1];
+						best_tweet.likes = (tweet.favorite_count+tweet.retweet_count);
+					}
+				}
+			}
+			else if(sentiment[0] <= worst_tweet.score) {
+				if(sentiment[0] < worst_tweet.score) {
+					worst_tweet.string = tweet.text;
+					worst_tweet.score = sentiment[0];
+					worst_tweet.word_count = sentiment[1];
+					worst_tweet.likes = (tweet.favorite_count+tweet.retweet_count);
+				}
+				else {
+					if((tweet.favorite_count+tweet.retweet_count) > (best_tweet.likes)) {
+						worst_tweet.string = tweet.text;
+						worst_tweet.score = sentiment[0];
+						worst_tweet.word_count = sentiment[1];
+						worst_tweet.likes = (tweet.favorite_count+tweet.retweet_count);
+					}
+				}
+			}
+			toAnalyze.shift();
+			console.log(sentiment[0]);
 		}
 	}
-}
-
-function partialAnalysis() {
-	//Analyzes some of the tweets for a user and stores results in global var, doesn't do all to retain framerate on draw loop in sketch.js
+	console.log(sentiment_total);
+	avg_score = sentiment_total/13;
+	userData = {best:best_tweet, worst:worst_tweet, average:avg_score};
+	console.log(userData);
 }

@@ -13,5 +13,4 @@ function getUserTweets(user) {
     "text": "Tweet Button, Follow Button, and Web Intents javascript now support Corgis http:\/\/t.co\/9fbA0oYy ^TS"
   }];
   //returns nothing
-  
 }
