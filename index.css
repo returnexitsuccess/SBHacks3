@@ -18,7 +18,7 @@ input.start:focus {
   outline: none;
 }
 
-div#start > p {
+div#prompt > p {
   color: white;
   font-size: 36;
   font-family: "Arial", sans-serif;
@@ -29,7 +29,7 @@ div#start > p {
   transform: translate(-200px, -200px);
 }
 
-div#view > p {
+div#top > p {
   color: white;
   font-size: 48;
   font-family: "Arial", sans-serif;
